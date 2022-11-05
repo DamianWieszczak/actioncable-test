@@ -1,2 +1,24 @@
-<h1>Hangouts#index</h1>
-<p>Find me in app/views/hangouts/index.html.erb</p>
+<div>
+  <div id="message-display">
+    <% @messages.each do |message| %>
+      <article class="message">
+        <div class="message-header">
+          <%= message.user.email %>
+        </div>
+        <div class="message-body">
+          <%= message.body %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+  <%= form_with model: @message, local: false do |f| %>
+    <div class="field has-addons">
+      <div class="control">
+        <%= f.text_field :body, id: 'message-input', class: 'input' %>
+      </div>
+      <div class="control">
+        <%= f.submit 'Send Message', class: 'button is-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>>
